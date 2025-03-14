@@ -6,21 +6,21 @@ Este projeto é um sistema de gerenciamento para uma barbearia, permitindo que c
 ## Tecnologias Utilizadas
 
 ### Backend
-- ![Java](https://upload.wikimedia.org/wikipedia/en/3/30/Java_programming_language_logo.svg) **Java (Spring Boot)** - Framework para desenvolvimento do backend
-- ![Spring Boot](https://spring.io/img/spring.svg) **Spring Boot** - Gerenciamento de APIs REST e injeção de dependências
-- ![MySQL](https://upload.wikimedia.org/wikipedia/commons/0/0a/MySQL_textlogo.svg) **MySQL** - Banco de dados relacional
-- ![Hibernate](https://hibernate.org/images/hibernate-logo.svg) **Hibernate** - ORM para gerenciamento do banco de dados
-- ![JWT](https://jwt.io/img/pic_logo.svg) **JWT** - Autenticação e segurança dos usuários
+- ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white) **Java (Spring Boot)** - Framework para desenvolvimento do backend
+- ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white) **Spring Boot** - Gerenciamento de APIs REST e injeção de dependências
+- ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white) **MySQL** - Banco de dados relacional
+- ![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=hibernate&logoColor=white) **Hibernate** - ORM para gerenciamento do banco de dados
+- ![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white) **JWT** - Autenticação e segurança dos usuários
 
 ### Frontend
-- ![Angular](https://angular.io/assets/images/logos/angular/angular.svg) **Angular** - Interface gráfica do usuário
-- ![TypeScript](https://upload.wikimedia.org/wikipedia/commons/4/4c/Typescript_logo_2020.svg) **TypeScript** - Linguagem utilizada no Angular
-- ![Bootstrap](https://upload.wikimedia.org/wikipedia/commons/b/b2/Bootstrap_logo.svg) **Bootstrap** - Estilização e responsividade
+- ![Angular](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white) **Angular** - Interface gráfica do usuário
+- ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white) **TypeScript** - Linguagem utilizada no Angular
+- ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white) **Bootstrap** - Estilização e responsividade
 
 ### Outras Ferramentas
-- ![Git](https://git-scm.com/images/logos/downloads/Git-Icon-1788C.svg) **Git & GitHub** - Controle de versão
-- ![Postman](https://www.postman.com/img/v2/logo-glyph.png) **Postman** - Testes de API
-- ![Docker](https://www.docker.com/wp-content/uploads/2022/03/Docker-Logo-White-RGB_Horizontal-730x189-1.png) **Docker** - Containerização do ambiente
+- ![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white) **Git & GitHub** - Controle de versão
+- ![Postman](https://img.shields.io/badge/Postman-FF6C37?style=for-the-badge&logo=postman&logoColor=white) **Postman** - Testes de API
+- ![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white) **Docker** - Containerização do ambiente
 
 ## Estrutura do Banco de Dados
 O banco de dados contém as seguintes tabelas principais:
