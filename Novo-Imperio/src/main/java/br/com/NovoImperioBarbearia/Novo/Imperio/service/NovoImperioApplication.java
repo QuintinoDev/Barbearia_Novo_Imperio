@@ -1,13 +1,18 @@
-package br.com.NovoImperioBarbearia.Novo.Imperio;
+package br.com.NovoImperioBarbearia.Novo.Imperio.service;
 
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class NovoImperioApplication {
+public class NovoImperioApplication implements CommandLineRunner {
 
 	public static void main(String[] args) {
 		SpringApplication.run(NovoImperioApplication.class, args);
 	}
 
+	@Override
+	public void run(String... args) throws Exception {
+
+	}
 }
