@@ -1,19 +1,19 @@
 package br.com.NovoImperioBarbearia.Novo.Imperio.modelo;
 
-public class Service {
+public class Product {
     private Long id;
     private String nome;
     private String descricao;
     private Double preco;
-    private Integer duracao;
+    private Integer estoque;
 
-    public Service(){}
+    public Product() {}
 
-    public Service(String nome, String descricao, Double preco, Integer duracao){
+    public Product(String nome, String descricao, Double preco, Integer estoque) {
         this.nome = nome;
         this.descricao = descricao;
         this.preco = preco;
-        this.duracao = duracao;
+        this.estoque = estoque;
     }
 
     public Long getId() {
@@ -48,11 +48,11 @@ public class Service {
         this.preco = preco;
     }
 
-    public Integer getDuracao() {
-        return duracao;
+    public Integer getEstoque() {
+        return estoque;
     }
 
-    public void setDuracao(Integer duracao) {
-        this.duracao = duracao;
+    public void setEstoque(Integer estoque) {
+        this.estoque = estoque;
     }
 }
