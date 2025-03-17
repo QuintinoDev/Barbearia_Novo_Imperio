@@ -8,7 +8,7 @@ Este projeto é um sistema de gerenciamento para uma barbearia, permitindo que c
 ### Backend
 - ![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white) **Java (Spring Boot)** - Framework para desenvolvimento do backend
 - ![Spring Boot](https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white) **Spring Boot** - Gerenciamento de APIs REST e injeção de dependências
-- ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white) **MySQL** - Banco de dados relacional
+- ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white) **PostgreSQL** - Banco de dados relacional
 - ![Hibernate](https://img.shields.io/badge/Hibernate-59666C?style=for-the-badge&logo=hibernate&logoColor=white) **Hibernate** - ORM para gerenciamento do banco de dados
 - ![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=json-web-tokens&logoColor=white) **JWT** - Autenticação e segurança dos usuários
 
