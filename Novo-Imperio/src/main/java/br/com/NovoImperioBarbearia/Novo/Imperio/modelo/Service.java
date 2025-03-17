@@ -1,6 +1,13 @@
 package br.com.NovoImperioBarbearia.Novo.Imperio.modelo;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "servico")
 public class Service {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String descricao;

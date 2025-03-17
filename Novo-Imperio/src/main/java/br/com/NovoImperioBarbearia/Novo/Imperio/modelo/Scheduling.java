@@ -1,14 +1,34 @@
 package br.com.NovoImperioBarbearia.Novo.Imperio.modelo;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 
+@Entity
+@Table(name="agendamento")
 public class Scheduling {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
     private Client cliente;
+
+    @ManyToOne
+    @JoinColumn(name = "barbeiro_id", nullable = false)
     private Barber barbeiro;
-    private LocalDate dataHora;
-    private String observacao;
+
+    @ManyToOne
+    @JoinColumn(name = "barbeiro_id", nullable = false)
     private Service servico;
+
+    private LocalDate dataHora;
+
+    private String observacao;
+
+    @Enumerated(EnumType.STRING)
     private StatusScheduling status;
 
     public Scheduling(){}

@@ -1,14 +1,33 @@
 package br.com.NovoImperioBarbearia.Novo.Imperio.modelo;
 
+import jakarta.persistence.*;
+
 import java.time.LocalDate;
 import java.util.List;
 
+@Entity
+@Table(name = "venda")
 public class Sale {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "cliente_id", nullable = false)
     private Client cliente;
+
+    @ManyToMany
+    @JoinTable(name = "venda_produto",
+            joinColumns = @JoinColumn(name = "venda_id"),
+            inverseJoinColumns = @JoinColumn(name = "produto_id"))
     private List<Product> produtos;
+
     private LocalDate dataVenda;
+
     private Double valorTotal;
+
+    @Enumerated(EnumType.STRING)
     private StatusPayment formaPagamento;
 
     public Sale(){}
