@@ -1,6 +1,6 @@
-package br.com.NovoImperioBarbearia.Novo.Imperio.repository;
+package br.com.BarbeShop.repository;
 
-import br.com.NovoImperioBarbearia.Novo.Imperio.modelo.Barber;
+import br.com.BarbeShop.model.Barber;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

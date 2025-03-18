@@ -1,9 +1,9 @@
-package br.com.NovoImperioBarbearia.Novo.Imperio.main;
+package br.com.BarbeShop.main;
 
-import br.com.NovoImperioBarbearia.Novo.Imperio.modelo.Barber;
-import br.com.NovoImperioBarbearia.Novo.Imperio.modelo.Client;
-import br.com.NovoImperioBarbearia.Novo.Imperio.repository.IBarberRepository;
-import br.com.NovoImperioBarbearia.Novo.Imperio.repository.IClientRepository;
+import br.com.BarbeShop.model.Barber;
+import br.com.BarbeShop.model.Client;
+import br.com.BarbeShop.repository.IBarberRepository;
+import br.com.BarbeShop.repository.IClientRepository;
 
 import java.util.Optional;
 import java.util.Scanner;
@@ -14,9 +14,8 @@ public class Main {
     private IBarberRepository barberRepository;
     Scanner scanner = new Scanner(System.in);
 
-    public Main(IBarberRepository barberRepository, IClientRepository clientRepository) {
+    public Main(IBarberRepository barberRepository) {
         this.barberRepository = barberRepository;
-        this.clientRepository = clientRepository;
     }
 
 

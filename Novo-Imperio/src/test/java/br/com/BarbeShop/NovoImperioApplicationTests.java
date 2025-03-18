@@ -1,4 +1,4 @@
-package br.com.NovoImperioBarbearia.Novo.Imperio;
+package br.com.BarbeShop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

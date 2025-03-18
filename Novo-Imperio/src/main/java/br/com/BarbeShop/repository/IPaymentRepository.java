@@ -1,7 +1,7 @@
-package br.com.NovoImperioBarbearia.Novo.Imperio.repository;
+package br.com.BarbeShop.repository;
 
-import br.com.NovoImperioBarbearia.Novo.Imperio.modelo.Payment;
-import br.com.NovoImperioBarbearia.Novo.Imperio.modelo.Scheduling;
+import br.com.BarbeShop.model.Payment;
+import br.com.BarbeShop.model.Scheduling;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

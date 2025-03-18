@@ -1,9 +1,14 @@
-package br.com.NovoImperioBarbearia.Novo.Imperio.modelo;
+package br.com.BarbeShop.model;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
+
+@Getter
+@Setter
 
 @Entity
 @Table(name = "venda")
@@ -37,54 +42,6 @@ public class Sale {
         this.produtos = produtos;
         this.dataVenda = dataVenda;
         this.valorTotal = valorTotal;
-        this.formaPagamento = formaPagamento;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Client getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Client cliente) {
-        this.cliente = cliente;
-    }
-
-    public List<Product> getProdutos() {
-        return produtos;
-    }
-
-    public void setProdutos(List<Product> produtos) {
-        this.produtos = produtos;
-    }
-
-    public LocalDate getDataVenda() {
-        return dataVenda;
-    }
-
-    public void setDataVenda(LocalDate dataVenda) {
-        this.dataVenda = dataVenda;
-    }
-
-    public Double getValorTotal() {
-        return valorTotal;
-    }
-
-    public void setValorTotal(Double valorTotal) {
-        this.valorTotal = valorTotal;
-    }
-
-    public StatusPayment getFormaPagamento() {
-        return formaPagamento;
-    }
-
-    public void setFormaPagamento(StatusPayment formaPagamento) {
         this.formaPagamento = formaPagamento;
     }
 }

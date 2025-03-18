@@ -1,4 +1,4 @@
-package br.com.NovoImperioBarbearia.Novo.Imperio.modelo;
+package br.com.BarbeShop.model;
 
 public enum StatusPayment {
     PAGO,
