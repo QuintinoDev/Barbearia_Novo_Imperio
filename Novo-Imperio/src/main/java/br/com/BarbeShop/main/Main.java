@@ -10,13 +10,13 @@ import java.util.Scanner;
 
 public class Main {
 
-    private IClientRepository clientRepository;
-    private IBarberRepository barberRepository;
+//    private IClientRepository clientRepository;
+//    private IBarberRepository barberRepository;
     Scanner scanner = new Scanner(System.in);
-
-    public Main(IBarberRepository barberRepository) {
-        this.barberRepository = barberRepository;
-    }
+//
+//    public Main(IBarberRepository barberRepository) {
+//        this.barberRepository = barberRepository;
+//    }
 
 
     public void exibirMenu(){
@@ -63,7 +63,7 @@ public class Main {
         System.out.println("Telefone");
         var telefone = scanner.nextLine();
         Client client = new Client(nome,email,senha,telefone);
-        clientRepository.save(client);
+        //clientRepository.save(client);
         System.out.println("Cliente cadastrado com sucesso");
     }
 
@@ -77,19 +77,19 @@ public class Main {
         System.out.println("Telefone");
         var telefone = scanner.nextLine();
         Barber barber = new Barber(nome,email,senha,telefone);
-        barberRepository.save(barber);
+        //barberRepository.save(barber);
         System.out.println("Barbairo cadastrado com sucesso");
     }
 
-    private void buscarClientePorNome() {
-        System.out.println("Digite o nome para buscar");
-        var nomeClient = scanner.nextLine();
-        Optional<Client> clientBusca = clientRepository.findByNomeContainingIgnoreCase(nomeClient);
-
-        if (clientBusca.isPresent()){
-            System.out.println("Cliente encontrado: "+clientBusca.get());
-        }else {
-            System.out.println("Cliente nao encontrado!");
+   private void buscarClientePorNome() {
+//        System.out.println("Digite o nome para buscar");
+//        var nomeClient = scanner.nextLine();
+//        //Optional<Client> clientBusca = clientRepository.findByNomeContainingIgnoreCase(nomeClient);
+//
+//        //if (clientBusca.isPresent()){
+//            System.out.println("Cliente encontrado: "+clientBusca.get());
+//        }else {
+//            System.out.println("Cliente nao encontrado!");
         }
-    }
+//    }
 }

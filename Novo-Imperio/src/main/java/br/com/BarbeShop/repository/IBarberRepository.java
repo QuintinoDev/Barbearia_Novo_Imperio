@@ -8,6 +8,4 @@ import java.util.List;
 
 @Repository
 public interface IBarberRepository extends JpaRepository<Barber, Long> {
-    //Buscar barbeiro pelo nome
-    List<Barber> findByNome(String nome);
 }

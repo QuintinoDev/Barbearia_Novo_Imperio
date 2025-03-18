@@ -29,7 +29,6 @@ public class Barber {
 
     private LocalDateTime dataCadastro = LocalDateTime.now();
 
-
     @OneToMany(mappedBy = "barbeiro", cascade = CascadeType.ALL)
     private List<Scheduling> agendamentos;
 
@@ -40,17 +39,5 @@ public class Barber {
         this.email = email;
         this.senha = senha;
         this.telefone = telefone;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
     }
 }

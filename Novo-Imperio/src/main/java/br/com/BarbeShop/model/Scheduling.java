@@ -18,15 +18,15 @@ public class Scheduling {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "clientes_id", nullable = false)
+    //@JoinColumn(name = "clientes_id", nullable = false)
     private Client cliente;
 
     @ManyToOne
-    @JoinColumn(name = "barbeiros_id", nullable = false)
+    //@JoinColumn(name = "barbeiros_id", nullable = false)
     private Barber barbeiro;
 
     @ManyToOne
-    @JoinColumn(name = "servicos_id", nullable = false)
+    //@JoinColumn(name = "servicos_id", nullable = false)
     private Service servico;
 
     private LocalDate dataHora;

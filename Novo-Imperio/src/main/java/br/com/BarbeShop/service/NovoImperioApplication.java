@@ -1,6 +1,7 @@
 package br.com.BarbeShop.service;
 
 import br.com.BarbeShop.main.Main;
+import br.com.BarbeShop.model.Barber;
 import br.com.BarbeShop.repository.IBarberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -9,8 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class NovoImperioApplication implements CommandLineRunner {
-	@Autowired
-	IBarberRepository barberRepository;
+//	@Autowired
+//	IBarberRepository barberRepository;
 //	@Autowired
 //	IClientRepository clientRepository;
 
@@ -20,7 +21,7 @@ public class NovoImperioApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Main main = new Main(barberRepository);
+		Main main = new Main();
 		main.exibirMenu();
 	}
 }
