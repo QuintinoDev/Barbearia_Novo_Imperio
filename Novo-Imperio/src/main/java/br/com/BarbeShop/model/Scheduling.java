@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Getter
 @Setter
@@ -18,16 +19,19 @@ public class Scheduling {
     private Long id;
 
     @ManyToOne
-    //@JoinColumn(name = "clientes_id", nullable = false)
+    @JoinColumn(name = "cliente_id", nullable = false)
     private Client cliente;
 
     @ManyToOne
-    //@JoinColumn(name = "barbeiros_id", nullable = false)
+    @JoinColumn(name = "barbeiro_id", nullable = false)
     private Barber barbeiro;
 
     @ManyToOne
-    //@JoinColumn(name = "servicos_id", nullable = false)
+    @JoinColumn(name = "servico_id", nullable = false)
     private Service servico;
+
+    @OneToMany(mappedBy = "agendamento", cascade = CascadeType.ALL)
+    private List<Payment> pagamento;
 
     private LocalDate dataHora;
 

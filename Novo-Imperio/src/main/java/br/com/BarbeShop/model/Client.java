@@ -30,10 +30,10 @@ public class Client{
 
     private LocalDateTime dataCadastro = LocalDateTime.now();
 
-    @OneToMany(mappedBy = "clientes", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Scheduling> agendamento;
 
-    @OneToMany(mappedBy = "clientes", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<Sale> vendas;
 
     public Client() {}

@@ -15,12 +15,18 @@ public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
     @JoinColumn(name = "agendamento_id", nullable = false)
     private Scheduling agendamento;
+
     private Double valor;
+
     private LocalDate datePagamento;
+
     @Enumerated(EnumType.STRING)
     private ShapePayment formaPagamento;
+
     @Enumerated(EnumType.STRING)
     private StatusPayment status;
 

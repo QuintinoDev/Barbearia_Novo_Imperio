@@ -4,19 +4,23 @@ import br.com.BarbeShop.model.Barber;
 import br.com.BarbeShop.model.Client;
 import br.com.BarbeShop.repository.IBarberRepository;
 import br.com.BarbeShop.repository.IClientRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 import java.util.Scanner;
 
+@Component
 public class Main {
 
 //    private IClientRepository clientRepository;
-//    private IBarberRepository barberRepository;
+    private IBarberRepository barberRepository;
     Scanner scanner = new Scanner(System.in);
 //
-//    public Main(IBarberRepository barberRepository) {
-//        this.barberRepository = barberRepository;
-//    }
+    @Autowired
+    public Main(IBarberRepository barberRepository) {
+       this.barberRepository = barberRepository;
+    }
 
 
     public void exibirMenu(){
@@ -77,7 +81,7 @@ public class Main {
         System.out.println("Telefone");
         var telefone = scanner.nextLine();
         Barber barber = new Barber(nome,email,senha,telefone);
-        //barberRepository.save(barber);
+        barberRepository.save(barber);
         System.out.println("Barbairo cadastrado com sucesso");
     }
 

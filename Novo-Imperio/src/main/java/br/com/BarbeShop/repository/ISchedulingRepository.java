@@ -8,6 +8,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface ISchedulingRepository extends JpaRepository<Scheduling, Long> {
-    List<Scheduling> findByBarber(Barber barber);
-    List<Scheduling> findByClient(Client client);
+    List<Scheduling> findByBarbeiro(Barber barbeiro);
+    List<Scheduling> findByCliente(Client cliente);
 }

@@ -10,10 +10,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class NovoImperioApplication implements CommandLineRunner {
-//	@Autowired
-//	IBarberRepository barberRepository;
-//	@Autowired
-//	IClientRepository clientRepository;
+
+	IBarberRepository barberRepository;
 
 	public static void main(String[] args) {
 		SpringApplication.run(NovoImperioApplication.class, args);
@@ -21,7 +19,7 @@ public class NovoImperioApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		Main main = new Main();
+		Main main = new Main(barberRepository);
 		main.exibirMenu();
 	}
 }
