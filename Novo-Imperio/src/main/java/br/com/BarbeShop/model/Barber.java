@@ -1,6 +1,9 @@
 package br.com.BarbeShop.model;
 
+import br.com.BarbeShop.dto.AtualizaBarber;
+import br.com.BarbeShop.dto.CadastroBarber;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -27,6 +30,11 @@ public class Barber {
 
     private String telefone;
 
+    private String especialidade;
+
+    @Column(nullable = false)
+    private Boolean ativo;
+
     private LocalDateTime dataCadastro = LocalDateTime.now();
 
     @OneToMany(mappedBy = "barbeiro", cascade = CascadeType.ALL)
@@ -34,10 +42,34 @@ public class Barber {
 
     public Barber() {}
 
-    public Barber(String nome, String email, String senha, String telefone) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.telefone = telefone;
+    public Barber(CadastroBarber barber) {
+        this.nome = barber.nome();
+        this.email = barber.email();
+        this.senha = barber.senha();
+        this.especialidade = barber.especialidade();
+        this.ativo = true;
+        this.telefone = barber.telefone();
+    }
+
+    public void atualizarCadastro(@Valid AtualizaBarber atualiza) {
+        if (atualiza.nome() != null){
+            this.nome = atualiza.nome();
+        }
+        if (atualiza.email() != null){
+            this.email = atualiza.email();
+        }
+        if (atualiza.senha() != null){
+            this.senha = atualiza.senha();
+        }
+        if (atualiza.especialidade() != null){
+            this.especialidade = atualiza.especialidade();
+        }
+        if (atualiza.telefone() != null){
+            this.telefone = atualiza.telefone();
+        }
+    }
+
+    public void excluir() {
+        this.ativo = false;
     }
 }

@@ -1,5 +1,6 @@
 package br.com.BarbeShop.model;
 
+import br.com.BarbeShop.dto.CadastroClient;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -38,7 +39,7 @@ public class Client{
 
     public Client() {}
 
-    public Client(String nome, String email, String senha, String telefone) {
+    public Client(CadastroClient client) {
         this.nome = nome;
         this.email = email;
         this.senha = senha;
