@@ -1,7 +1,9 @@
 package br.com.BarbeShop.model;
 
+import br.com.BarbeShop.dto.AtualizarClient;
 import br.com.BarbeShop.dto.CadastroClient;
 import jakarta.persistence.*;
+import jakarta.validation.Valid;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -29,6 +31,9 @@ public class Client{
 
     private String telefone;
 
+    @Column(nullable = false)
+    private Boolean ativo;
+
     private LocalDateTime dataCadastro = LocalDateTime.now();
 
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
@@ -40,9 +45,30 @@ public class Client{
     public Client() {}
 
     public Client(CadastroClient client) {
-        this.nome = nome;
-        this.email = email;
-        this.senha = senha;
-        this.telefone = telefone;
+        this.nome = client.nome();
+        this.email = client.email();
+        this.senha = client.senha();
+        this.telefone = client.telefone();
+        this.ativo = true;
     }
+
+    public void atualizarCadastro(@Valid AtualizarClient atualiza) {
+        if (atualiza.nome() != null){
+            this.nome = atualiza.nome();
+        }
+        if (atualiza.email() != null){
+            this.email = atualiza.email();
+        }
+        if (atualiza.senha() != null){
+            this.senha = atualiza.senha();
+        }
+        if (atualiza.telefone() != null){
+            this.telefone = atualiza.telefone();
+        }
+    }
+
+    public void excluir() {
+        this.ativo = false;
+    }
+
 }
