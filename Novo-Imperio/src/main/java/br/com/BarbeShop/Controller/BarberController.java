@@ -7,8 +7,10 @@ import br.com.BarbeShop.model.Barber;
 import br.com.BarbeShop.repository.IBarberRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.util.List;
 
@@ -23,23 +25,29 @@ public class BarberController {
     //@Valid para usar a validação que colocamos no CadastroBarber
     @PostMapping
     @Transactional
-    public void cadastrar(@RequestBody @Valid CadastroBarber cadastro){
-        repository.save(new Barber(cadastro));
+    public ResponseEntity cadastrar(@RequestBody @Valid CadastroBarber dados, UriComponentsBuilder uriBuilder){
+        var barbe = new Barber(dados);
+        repository.save(barbe);
+        var uri = uriBuilder.path("/medicos/{id}").buildAndExpand(barbe.getId()).toUri();
+        return ResponseEntity.created(uri).body( new DadosBarbe(barbe));
     }
 
 //  Listar somente os perfis de barbeiros que estão ativos
     @GetMapping
     @Transactional
-    public List<DadosBarbe> listaBarbeiro(){
-        return repository.findAllByAtivoTrue().stream().map(DadosBarbe::new).toList();
+    public ResponseEntity<List<DadosBarbe>> listaBarbeiro(){
+        var lista =  repository.findAllByAtivoTrue().stream().map(DadosBarbe::new).toList();
+        return ResponseEntity.ok(lista);
     }
 
     //Anotação para atulaização de cadastro
     @PutMapping
     @Transactional
-    public void atualizarDados(@RequestBody @Valid AtualizaBarber atualiza){
+    public ResponseEntity atualizarDados(@RequestBody @Valid AtualizaBarber atualiza){
         var barber = repository.getReferenceById(atualiza.id());
         barber.atualizarCadastro(atualiza);
+
+        return ResponseEntity.ok(new DadosBarbe(barber));
     }
 
 //    Exclusão simples apaga todos os registros do banco de dados
@@ -51,8 +59,17 @@ public class BarberController {
 //  Deletando de forma logica, so tornando o nome da coluna ativo em falso
     @DeleteMapping("/{id}")
     @Transactional
-    public void excluir(@PathVariable Long id){
+//  RespondeEntity volta uma resposta 204, a sim falando que nossa requisição não tem retorno
+    public ResponseEntity excluir(@PathVariable Long id){
         var barber = repository.getReferenceById(id);
         barber.excluir();
+        return ResponseEntity.noContent().build();
+    }
+
+    //Buscar barbeiro e detalhar as informações
+    @GetMapping("/{id}")
+    public ResponseEntity detalhar (@PathVariable Long id){
+        var barber = repository.getReferenceById(id);
+        return ResponseEntity.ok(new DadosBarbe(barber));
     }
 }
