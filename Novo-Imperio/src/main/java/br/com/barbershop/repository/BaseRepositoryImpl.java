@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import br.com.barbershop.model.AbstractEntity;
 import br.com.barbershop.util.assignment.Views;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.persistence.PersistenceContext;
 
 public class BaseRepositoryImpl<T extends AbstractEntity> implements BaseRepository<T> {
@@ -19,12 +20,12 @@ public class BaseRepositoryImpl<T extends AbstractEntity> implements BaseReposit
     private EntityManager em;
 
     @Override
-    public T findOneAndUpdateAttributes(T entity) {
+    public T findOneAndUpdateAttributes(T entity, Object id) {
     	@SuppressWarnings("unchecked")
-		T existingEntity = (T) em.find(entity.getClass(), entity.getId());
+		T existingEntity = (T) em.find(entity.getClass(), id);
 
         if (existingEntity == null) {
-            throw new IllegalArgumentException("Entity not found: " + entity.getId());
+            throw new EntityNotFoundException("Unable to find " + entity.getClass().getName() + " with id " + entity.getId());
         }
 
         try {

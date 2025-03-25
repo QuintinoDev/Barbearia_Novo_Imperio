@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import br.com.barbershop.util.assignment.Create;
 import br.com.barbershop.util.assignment.Views;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -32,7 +33,7 @@ public class Barber extends AbstractEntity {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @JsonView(Views.Editable.class)
+    @JsonView(Views.Viewable.class)
     private Long id;
     
     @NotBlank
@@ -55,7 +56,7 @@ public class Barber extends AbstractEntity {
     @JsonView(Views.Editable.class)
     private String telefone;
 
-    @NotBlank
+    @NotBlank(groups = Create.class)
     @JsonView(Views.Create.class)
     private String especialidade;
 
@@ -69,6 +70,10 @@ public class Barber extends AbstractEntity {
     private LocalDateTime dataCadastro;
 
     @OneToMany(mappedBy = "barbeiro", cascade = CascadeType.ALL)
-    @JsonView(Views.Editable.class)
+    @JsonView(Views.Viewable.class)
     private List<Scheduling> agendamentos;
+    
+    public void logicalDelete() {
+    	this.ativo = false;
+    }
 }

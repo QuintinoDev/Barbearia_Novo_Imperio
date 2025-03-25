@@ -1,9 +1,11 @@
 package br.com.barbershop.controller;
 
-import java.util.List;
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,37 +33,44 @@ public class BarberController {
     @GetMapping("/{id}")
     @Transactional
     @JsonView(Views.Viewable.class)
-    public Optional<Barber> consultar(@PathVariable Long id){
-    	return repository.findById(id);
+    public ResponseEntity<Barber> consultar(@PathVariable Long id) {
+        return repository.findById(id)
+                .map(ResponseEntity::ok) 
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
     
     @GetMapping
     @Transactional
     @JsonView(Views.Viewable.class)
-    public List<Barber> consultar(){
-    	return repository.findAll();
+    public ResponseEntity<Page<Barber>> consultar(@PageableDefault(size = 10) Pageable paginacao){
+    	Page<Barber> page = repository.findAllByAtivoTrue(paginacao);
+    	return ResponseEntity.ok(page);
     }
 
     @PostMapping
     @Transactional
     @JsonView(Views.Viewable.class)
-    public Barber cadastrar(@RequestBody @Valid Barber barber){
-		return repository.save(barber);
+    public ResponseEntity<Barber> cadastrar(@RequestBody @Valid @JsonView(Views.Editable.class) Barber barber) {
+        Barber savedBarber = repository.save(barber);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedBarber); 
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     @Transactional
     @JsonView(Views.Viewable.class)
-    public Barber atualizarDados(@RequestBody @Valid Barber barber){
-    	barber = repository.findOneAndUpdateAttributes(barber); 
-    	return repository.save(barber);
+    public ResponseEntity<Barber> atualizarDados(@PathVariable Long id, @RequestBody @Valid @JsonView(Views.Editable.class) Barber barber){
+    	Barber updatedBarber = repository.findOneAndUpdateAttributes(barber, id); 
+    	return ResponseEntity.ok(repository.save(updatedBarber));
     }
-
+    
     @DeleteMapping("/{id}")
     @Transactional
     @JsonView(Views.Viewable.class)
-    public void excluir(@PathVariable Long id){
+    public ResponseEntity<Void> excluir(@PathVariable Long id){
     	Barber barber = repository.getReferenceById(id);
-    	repository.delete(barber);
+    	barber.logicalDelete();
+    	repository.save(barber);
+    	
+    	return ResponseEntity.noContent().build();
     }
 }

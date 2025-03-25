@@ -1,16 +1,17 @@
 package br.com.barbershop.repository;
 
+import br.com.barbershop.model.Client;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import br.com.barbershop.model.Client;
-
-import java.util.List;
 import java.util.Optional;
 
 @Repository
 public interface ClientRepository extends JpaRepository<Client,Long> {
 
     Optional<Client> findByNomeContainingIgnoreCase(String nome);
-    List<Client> findByNome(String nome);
+
+    Page<Client> findAllByAtivoTrue(Pageable paginacao);
 }
