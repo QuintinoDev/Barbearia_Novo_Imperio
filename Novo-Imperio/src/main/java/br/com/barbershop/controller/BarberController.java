@@ -7,6 +7,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,11 +21,14 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 import br.com.barbershop.model.Barber;
 import br.com.barbershop.repository.BarberRepository;
+import br.com.barbershop.util.assignment.Create;
+import br.com.barbershop.util.assignment.Update;
 import br.com.barbershop.util.assignment.Views;
 import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/barbeiros")
+@Validated
 public class BarberController {
 
     @Autowired
@@ -50,7 +54,7 @@ public class BarberController {
     @PostMapping
     @Transactional
     @JsonView(Views.Viewable.class)
-    public ResponseEntity<Barber> cadastrar(@RequestBody @Valid @JsonView(Views.Editable.class) Barber barber) {
+    public ResponseEntity<Barber> cadastrar(@RequestBody @Validated(Create.class) @JsonView(Views.Create.class) Barber barber) {
         Barber savedBarber = repository.save(barber);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedBarber); 
     }
@@ -58,7 +62,7 @@ public class BarberController {
     @PutMapping("/{id}")
     @Transactional
     @JsonView(Views.Viewable.class)
-    public ResponseEntity<Barber> atualizarDados(@PathVariable Long id, @RequestBody @Valid @JsonView(Views.Editable.class) Barber barber) {
+    public ResponseEntity<Barber> atualizarDados(@PathVariable Long id, @RequestBody @Validated(Update.class) @JsonView(Views.Update.class) Barber barber) {
     	Barber updatedBarber = repository.findOneAndUpdateAttributes(barber, id); 
     	return ResponseEntity.ok(repository.save(updatedBarber));
     }

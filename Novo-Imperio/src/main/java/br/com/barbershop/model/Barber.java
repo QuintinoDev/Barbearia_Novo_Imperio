@@ -7,7 +7,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import br.com.barbershop.repository.BarberRepository;
 import br.com.barbershop.util.annotation.Unique;
 import br.com.barbershop.util.assignment.Create;
 import br.com.barbershop.util.assignment.Views;
@@ -52,7 +51,7 @@ public class Barber extends AbstractEntity {
 
     @NotBlank
     @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$", message = "{email.violation}")
-    @Unique(name = "E-mail", entityClass = Barber.class, fieldName = "email")
+    @Unique(name = "E-mail", entityClass = Barber.class, fieldName = "email", groups = Create.class)
     @JsonView(Views.Editable.class)
     @Column(unique = true, nullable = false)
     private String email;
