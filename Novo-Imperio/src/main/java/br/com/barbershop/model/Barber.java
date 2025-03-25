@@ -7,6 +7,8 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import br.com.barbershop.repository.BarberRepository;
+import br.com.barbershop.util.annotation.Unique;
 import br.com.barbershop.util.assignment.Create;
 import br.com.barbershop.util.assignment.Views;
 import jakarta.persistence.CascadeType;
@@ -39,33 +41,40 @@ public class Barber extends AbstractEntity {
     @NotBlank
     @Size(min=1, max=50)
 	@JsonView(Views.Editable.class)
+    @Column(nullable = false)
     private String nome;
     
     @NotBlank
     @Size(min=1, max=50)
 	@JsonView(Views.Editable.class)
+    @Column(nullable = false)
     private String senha;
 
     @NotBlank
     @Pattern(regexp = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$", message = "{email.violation}")
+    @Unique(name = "E-mail", entityClass = Barber.class, fieldName = "email")
     @JsonView(Views.Editable.class)
+    @Column(unique = true, nullable = false)
     private String email;
 
     @NotBlank
     @Pattern(regexp = "^(\\+\\d{1,3}\\s?)?(\\(?\\d{2,4}\\)?\\s?)?\\d{4,5}-?\\d{4}$", message = "{phone.violation}")
     @JsonView(Views.Editable.class)
+    @Column(nullable = false)
     private String telefone;
 
     @NotBlank(groups = Create.class)
     @JsonView(Views.Create.class)
+    @Column(nullable = false)
     private String especialidade;
 
     @NotNull
     @JsonView(Views.Internal.class)
+    @Column(nullable = false)
     private Boolean ativo = true;
 
     @CreationTimestamp 
-    @Column(updatable = false) 
+    @Column(nullable = false, updatable = false) 
     @JsonView(Views.Viewable.class)
     private LocalDateTime dataCadastro;
 

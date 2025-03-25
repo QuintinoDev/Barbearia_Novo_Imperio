@@ -1,4 +1,4 @@
-package br.com.BarbeShop.infra;
+package br.com.barbershop.util.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;

@@ -58,7 +58,7 @@ public class BarberController {
     @PutMapping("/{id}")
     @Transactional
     @JsonView(Views.Viewable.class)
-    public ResponseEntity<Barber> atualizarDados(@PathVariable Long id, @RequestBody @Valid @JsonView(Views.Editable.class) Barber barber){
+    public ResponseEntity<Barber> atualizarDados(@PathVariable Long id, @RequestBody @Valid @JsonView(Views.Editable.class) Barber barber) {
     	Barber updatedBarber = repository.findOneAndUpdateAttributes(barber, id); 
     	return ResponseEntity.ok(repository.save(updatedBarber));
     }
