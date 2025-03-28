@@ -1,6 +1,9 @@
 package br.com.barbershop.controller;
 
 import br.com.barbershop.dto.AuthenticationData;
+import br.com.barbershop.dto.DadosTokenJWT;
+import br.com.barbershop.model.User;
+import br.com.barbershop.util.security.TokenService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,14 +22,20 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationManager manager;
 
+    //Instanciando nossa classe de geração de token
+    @Autowired
+    private TokenService tokenService;
+
     //controller para fazer a autenticação
     @PostMapping
     public ResponseEntity efetuarLogin(@RequestBody @Valid AuthenticationData data){
         //chamando dto do propio spring para transforma meu dto em um token
         var token = new UsernamePasswordAuthenticationToken(data.login(), data.senha());
         var authentication = manager.authenticate(token);
+        //Passando nossa autenticação parar dentro do token para ele me devolver uma JWT
+        var tokenJWT = tokenService.gerarToken((User) authentication.getPrincipal());
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(new DadosTokenJWT(tokenJWT));
     }
 
 }
