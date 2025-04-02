@@ -1,7 +1,7 @@
 package br.com.barbershop.util.enumerated;
 
 public enum StatusScheduling {
-    PENDETE,
+    PENDENTE,
     CONFIRMADO,
     CANCELADO,
     FINALIZADO
